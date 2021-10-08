@@ -5,6 +5,8 @@
  */
 package Controlador;
 
+import Modelo.Empleado;
+import Modelo.EmpleadoDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -27,6 +29,10 @@ public class Validar extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
+   EmpleadoDAO emDao = new EmpleadoDAO();
+   Empleado emp = new Empleado();
+   
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -70,7 +76,20 @@ public class Validar extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String action = request.getParameter("action");
+        
+        if(action.equalsIgnoreCase("Ingresar")){
+            String user = request.getParameter("txtUser");
+            String pass = request.getParameter("txtPass");
+            emp = emDao.Validar(user, pass);
+            if(emp.getUser() != null){
+                request.getRequestDispatcher("Controlador?action=Principal").forward(request, response);
+            }else{
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+            }
+        }else{
+            request.getRequestDispatcher("index.jsp").forward(request, response);  
+        }
     }
 
     /**
