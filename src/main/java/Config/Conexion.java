@@ -16,13 +16,13 @@ import java.sql.SQLException;
 public class Conexion {
     Connection conexion;
     
-    private String URL = "jdbc:mysql://localhost:3306/sventas";
-    private String user = "root";
-    private String password = "";
+    private String URL = "jdbc:postgresql://ec2-54-145-110-118.compute-1.amazonaws.com:5432/d3affqm0uqaj4q?sslmode=require";
+    private String user = "fahckhnpnrmusw";
+    private String password = "19f7ad0b156c4f2bb9b3c6bcc122ba1ff519f0057a59551a350a603d87374028";
     
     public Connection Conexion(){
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("org.postgresql.Driver");
             conexion = DriverManager.getConnection(URL, user, password);
         } catch (ClassNotFoundException | SQLException ex) {
             System.out.println("Error SQL "+ ex.getMessage());
