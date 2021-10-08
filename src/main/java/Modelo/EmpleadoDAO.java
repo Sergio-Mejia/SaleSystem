@@ -24,7 +24,7 @@ public class EmpleadoDAO {
     
     public Empleado Validar(String User, String DNI){
         Empleado emp = new Empleado();
-        String sql = "select *  from empleado where User=? and Dni=?";
+        String sql = "select * from empleado where Usuario=? and Dni=?";
         try {
             conex = con.Conexion();
             ps = conex.prepareStatement(sql);
@@ -34,7 +34,7 @@ public class EmpleadoDAO {
             
             while(res.next()){
                 emp.setId(res.getInt("Id"));
-                emp.setUser(res.getString("User"));
+                emp.setUser(res.getString("Usuario"));
                 emp.setDNI(res.getString("Dni"));
                 emp.setNombre(res.getString("Nombres"));            
             }
