@@ -18,18 +18,18 @@
         <div class="d-flex">
             <div class="col-sm-4">
                 <div class="card">
-                    <form action="Controlador" method="POST">
+                    <form action="Controlador?menu=RegistrarVenta" method="POST">
                         <div class="card-body">
                             <div class="form-group">
                                 <label>Datos del Cliente</label>
                             </div>
                             <div class="form-group d-flex">
                                 <div class="col-sm-6 d-flex">
-                                    <input type="text" name="codigoCliente" class="form-control" placeholder="Codigo">
-                                    <input type="submit" name="accion" value="Buscar" class="btn btn-outline-dark">
+                                    <input type="text" name="codigoCliente" value="${c.getDni()}" class="form-control" placeholder="Codigo">
+                                    <input type="submit" name="accion" value="BuscarCliente" class="btn btn-outline-dark">
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="text" name="nombresCliente" placeholder="Datos Cliente" class="form-control" >
+                                    <input type="text" name="nombresCliente" value="${c.getNombres()}" placeholder="Datos Cliente" class="form-control" >
                                 </div>                                                                                  
                             </div>
 
@@ -71,10 +71,11 @@
             <div class="col-sm-7">
                 <div class="card">
                     <div class="card-body">
-                        <div>
-                            <label>Numero Serie</label>
+                        <div class="d-flex col-sm-5 ml-auto"> 
+                            <label>Número Serie</label>
                             <input type="text" name="nroSerie" class="form-control">
                         </div>
+                        <br>
                         <table class="table table-hover">
                             <thead>
                                 <tr>
@@ -89,8 +90,14 @@
                             </thead>
                         </table>
                     </div>
+                    <div class="card-footer">
+                        <div>
+                            <input type="submit" name="accion" value="Generar Venta" class="btn-success">
+                            <input type="submit" name="accion" value="Cancelar" class="btn-danger">
+                        </div>
+                        
+                    </div>
                 </div>
-
             </div>
         </div>
 

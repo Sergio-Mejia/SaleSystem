@@ -34,7 +34,7 @@
                             <a class="btn btn-outline-dark" style="margin-left: 10px; border: none; color: white" href="Controlador?menu=Clientes" target="myFrame">Clientes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-outline-dark" style="margin-left: 10px; border: none; color: white" href="Controlador?menu=RegistrarVenta" target="myFrame">Nueva Venta</a>
+                            <a class="btn btn-outline-dark" style="margin-left: 10px; border: none; color: white" href="Controlador?menu=RegistrarVenta&accion=default" target="myFrame">Nueva Venta</a>
                         </li>
                     </ul>
                 </div>
