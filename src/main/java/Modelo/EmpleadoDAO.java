@@ -75,7 +75,9 @@ public class EmpleadoDAO {
 
     public int Agregar(Empleado e) {
         String SQL = "INSERT INTO empleado(dni, nombres, telefono, estado, usuario) VALUES(?, ?, ?, ?, ?)";
+//        String SQLID = "SELECT idempleado FROM empleado ORDER BY idempleado DESC LIMIT 1";
         try {
+            
             conex = con.Conexion();
             ps = conex.prepareStatement(SQL);
             ps.setString(1, e.getDNI());

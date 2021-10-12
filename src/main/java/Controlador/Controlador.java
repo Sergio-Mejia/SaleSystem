@@ -94,7 +94,6 @@ public class Controlador extends HttpServlet {
                     break;
             }
             request.getRequestDispatcher("Empleado.jsp").forward(request, response);
-
         }
 
         if (menu.equals("Principal")) {

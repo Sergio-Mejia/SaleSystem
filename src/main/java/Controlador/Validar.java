@@ -77,17 +77,18 @@ public class Validar extends HttpServlet {
             throws ServletException, IOException {
         String action = request.getParameter("action");
 
-        if (action.equalsIgnoreCase("Ingresar")) {
+        if(action.equalsIgnoreCase("Ingresar")){
             String user = request.getParameter("txtUser");
             String pass = request.getParameter("txtPass");
             emp = emDao.Validar(user, pass);
             if(emp.getUser() != null){
-                request.getRequestDispatcher("Controlador?action=Principal").forward(request, response);
+                request.setAttribute("usuario", emp);
+                request.getRequestDispatcher("Controlador?menu=Principal").forward(request, response);
             }else{
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             }
-        } else {
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+        }else{
+            request.getRequestDispatcher("index.jsp").forward(request, response);  
         }
     }
 
