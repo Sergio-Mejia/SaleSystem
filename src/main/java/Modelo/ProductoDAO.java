@@ -79,9 +79,9 @@ public class ProductoDAO {
             while (res.next()) {
                 pro.setId(res.getInt(1));
                 pro.setNombres(res.getString(2));
-                pro.setPrecio(res.getDouble(4));
-                pro.setStock(res.getInt(5));
-                pro.setEstado(res.getString(6));
+                pro.setPrecio(res.getDouble(3));
+                pro.setStock(res.getInt(4));
+                pro.setEstado(res.getString(5));
             }
         } catch (Exception e) {
         }
@@ -95,7 +95,7 @@ public class ProductoDAO {
             ps = conex.prepareStatement(SQL);
             ps.setString(1, e.getNombres());
             ps.setDouble(2, e.getPrecio());
-            ps.setDouble(3, e.getStock());
+            ps.setInt( 3, e.getStock());
             ps.setString(4, e.getEstado());
             ps.setInt(5, e.getId());
             ps.executeUpdate();
