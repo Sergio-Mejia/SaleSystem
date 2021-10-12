@@ -24,21 +24,22 @@ public class EmpleadoDAO {
     
     public Empleado Validar(String User, String DNI){
         Empleado emp = new Empleado();
-        String sql = "select * from empleado where Usuario=? and Dni=?";
+        String sql = "select * from empleado where usuario = ? and dni = ? ";
         try {
             conex = con.Conexion();
             ps = conex.prepareStatement(sql);
-            ps.setString(0, User);
-            ps.setString(1, DNI);
+            ps.setString(1, User);
+            ps.setString(2, DNI);
             res = ps.executeQuery();
             
             while(res.next()){
-                emp.setId(res.getInt("Id"));
-                emp.setUser(res.getString("Usuario"));
-                emp.setDNI(res.getString("Dni"));
-                emp.setNombre(res.getString("Nombres"));            
+                emp.setId(res.getInt("idempleado"));
+                emp.setUser(res.getString("usuario"));
+                emp.setDNI(res.getString("dni"));
+                emp.setNombre(res.getString("nombres"));            
             }
         } catch (Exception e) {
+            System.out.println("Error validar: "+ e.getMessage());
         }
         return emp;
     }

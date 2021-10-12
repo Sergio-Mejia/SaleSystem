@@ -8,6 +8,10 @@ package Config;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
 
 /**
  *
@@ -23,10 +27,10 @@ public class Conexion {
     public Connection Conexion(){
         try {
             Class.forName("org.postgresql.Driver");
-            conexion = DriverManager.getConnection(URL, user, password);
+            conexion = DriverManager.getConnection(URL, user, password);               
         } catch (ClassNotFoundException | SQLException ex) {
-            System.out.println("Error SQL "+ ex.getMessage());
-        }  
+            System.out.println("Error en la conexion "+ex.getMessage());
+        }
         return conexion;
     }
 }

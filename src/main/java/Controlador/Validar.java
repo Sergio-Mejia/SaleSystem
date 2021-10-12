@@ -29,10 +29,9 @@ public class Validar extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
-   EmpleadoDAO emDao = new EmpleadoDAO();
-   Empleado emp = new Empleado();
-   
+    EmpleadoDAO emDao = new EmpleadoDAO();
+    Empleado emp = new Empleado();
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -41,7 +40,7 @@ public class Validar extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Validar</title>");            
+            out.println("<title>Servlet Validar</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet Validar at " + request.getContextPath() + "</h1>");
@@ -77,18 +76,18 @@ public class Validar extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String action = request.getParameter("action");
-        
-        if(action.equalsIgnoreCase("Ingresar")){
+
+        if (action.equalsIgnoreCase("Ingresar")) {
             String user = request.getParameter("txtUser");
             String pass = request.getParameter("txtPass");
             emp = emDao.Validar(user, pass);
             if(emp.getUser() != null){
-                request.getRequestDispatcher("Controlador?action=Principal.jsp").forward(request, response);
+                request.getRequestDispatcher("Controlador?action=Principal").forward(request, response);
             }else{
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             }
-        }else{
-            request.getRequestDispatcher("index.jsp").forward(request, response);  
+        } else {
+            request.getRequestDispatcher("index.jsp").forward(request, response);
         }
     }
 
