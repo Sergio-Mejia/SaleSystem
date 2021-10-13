@@ -209,7 +209,9 @@ public class Controlador extends HttpServlet {
                     break;
                     
                 default:
+                    
                     numeroSerie = vdao.GenerarSerie();
+                    
                     if(numeroSerie==null){
                         numeroSerie = "00000001";
                         request.setAttribute("nserie", numeroSerie);

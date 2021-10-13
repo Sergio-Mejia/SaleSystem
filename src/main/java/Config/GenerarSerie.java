@@ -8,6 +8,8 @@ public class GenerarSerie {
 
     int dato;
     String numero;
+    
+ 
 
     public String numeroSerie(int dato) {
         this.dato = dato + 1;
@@ -34,7 +36,7 @@ public class GenerarSerie {
             numero = "000000" + this.dato;
         }
         if (this.dato < 10) {
-            numero = "00000000" + this.dato;
+            numero = "000000" + this.dato;
         }
 
         return this.numero;
