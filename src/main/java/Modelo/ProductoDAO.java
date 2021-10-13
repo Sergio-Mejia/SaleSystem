@@ -111,7 +111,7 @@ public class ProductoDAO {
             conex = con.Conexion();
             ps = conex.prepareStatement(SQL);
             ps.executeUpdate();
-        } catch (Exception e) {
+        } catch (SQLException e) {
         }
     }
     

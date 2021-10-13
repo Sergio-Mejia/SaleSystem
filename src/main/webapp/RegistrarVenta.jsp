@@ -13,11 +13,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
 
-        <title>JSP Page</title>
+        <title>Ventas</title>
+        <style>
+            @media print{
+                .parte01, .btn, .accion{
+                    display: none;                
+                }
+            }
+            
+        </style>
     </head>
     <body>
         <div class="d-flex">
-            <div class="col-sm-4">
+            <div class="col-sm-4 parte01">
                 <div class="card">
                     <form action="Controlador?menu=RegistrarVenta" method="POST">
                         <div class="card-body">
@@ -86,7 +94,7 @@
                                     <th>Precio</th>
                                     <th>Cantidad</th>
                                     <th>Subtotal</th>
-                                    <th>Acciones</th>
+                                    <th class="accion">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -109,7 +117,7 @@
                     </div>
                     <div class="card-footer d-flex">
                         <div class="col-sm-6">
-                            <a href="Controlador?menu=RegistrarVenta&accion=GenerarVenta">Generar Venta</a>
+                            <a href="Controlador?menu=RegistrarVenta&accion=GenerarVenta" class="btn btn-success" onclick="print()">Generar Venta</a>
                             
                             <input type="submit" name="accion" value="Cancelar" class="btn btn-danger">
                         </div>
