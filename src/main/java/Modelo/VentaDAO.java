@@ -3,9 +3,15 @@ package Modelo;
 
 import Config.Conexion;
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -67,6 +73,7 @@ public class VentaDAO {
             ps.executeQuery();
             
         } catch (SQLException e) {
+            System.out.println("error guuardar Ventas" + e.getMessage());
         }
         return r;
     }

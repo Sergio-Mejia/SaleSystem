@@ -177,7 +177,7 @@ public class Controlador extends HttpServlet {
                     v.setIdcliente(c.getId());
                     v.setIdempleado(2);
                     v.setNumserie(numeroSerie);
-                    v.setFecha("2021/10/13");
+                    v.setFecha("2021-10-13");
                     v.setMonto(totalpagar);
                     v.setEstado("1");
                     vdao.guardarVenta(v);
