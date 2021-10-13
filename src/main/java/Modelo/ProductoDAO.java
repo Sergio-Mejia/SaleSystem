@@ -114,4 +114,20 @@ public class ProductoDAO {
         } catch (Exception e) {
         }
     }
+    
+    public int actualizarStock(int id, int stock){
+        String SQL = "UPDATE producto SET stock=? WHERE idproducto=?";
+        
+        try {
+            conex = con.Conexion();
+            ps = conex.prepareStatement(SQL);
+            
+            ps.setInt(1, stock);
+            ps.setInt(2, id);
+            
+            ps.executeUpdate();
+        } catch (SQLException e) {
+        }
+        return r;
+    }
 }

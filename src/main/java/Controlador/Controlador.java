@@ -174,6 +174,18 @@ public class Controlador extends HttpServlet {
                     break;
                     
                 case "GenerarVenta":
+                    
+                    for(int i=0; i<lista.size(); i++){
+                        Producto pr = new Producto();
+                        int cantidad, idproducto;
+                        cantidad = lista.get(i).getCantidad();
+                        idproducto = lista.get(i).getIdproducto();
+                        ProductoDAO ao = new ProductoDAO();
+                        pr = ao.ListarId(idproducto);
+                        int sac = pr.getStock()-cantidad;
+                        ao.actualizarStock(idproducto, sac);
+                    }
+                    
                     v.setIdcliente(c.getId());
                     v.setIdempleado(2);
                     v.setNumserie(numeroSerie);
@@ -192,6 +204,8 @@ public class Controlador extends HttpServlet {
                         v.setPrecio(lista.get(i).getPrecio());
                         vdao.guardarDetalleVenta(v);
                     }
+                    
+                    
                     break;
                     
                 default:
