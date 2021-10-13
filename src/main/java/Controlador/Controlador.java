@@ -172,6 +172,28 @@ public class Controlador extends HttpServlet {
                     request.setAttribute("totalpagar", totalpagar);
                     request.setAttribute("lista", lista);
                     break;
+                    
+                case "GenerarVenta":
+                    v.setIdcliente(c.getId());
+                    v.setIdempleado(2);
+                    v.setNumserie(numeroSerie);
+                    v.setFecha("2021/10/13");
+                    v.setMonto(totalpagar);
+                    v.setEstado("1");
+                    vdao.guardarVenta(v);
+                    
+                    int idv = Integer.parseInt(vdao.IdVentas());
+                    
+                    for(int i=0; i<lista.size(); i++){
+                        v = new Venta();
+                        v.setId(idv);
+                        v.setIdproducto(lista.get(i).getIdproducto());
+                        v.setCantidad(lista.get(i).getCantidad());
+                        v.setPrecio(lista.get(i).getPrecio());
+                        vdao.guardarDetalleVenta(v);
+                    }
+                    break;
+                    
                 default:
                     numeroSerie = vdao.GenerarSerie();
                     if(numeroSerie==null){
