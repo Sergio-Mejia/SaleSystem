@@ -43,7 +43,7 @@
                             <div class="form-group d-flex">
                                 <div class="col-sm-6 d-flex">
                                     <input type="text" name="codigoProducto" value="${producto.getId()}" class="form-control" placeholder="Codigo">
-                                    <button type="submit" name="accion" value="Buscarproducto" class="btn btn-outline-dark"></button>
+                                    <button type="submit" name="accion" value="Buscarproducto" class="btn btn-outline-dark">Buscar</button>
                                 </div>
                                 <div class="col-sm-6">
                                     <input type="text" name="nomproducto" value="${producto.getNombres()}" class="form-control" >
@@ -63,7 +63,7 @@
                             </div>
                             <br>
                             <div class="form-group">
-                                <button type="submit" name="accion" value="Agregar" class="btn btn-outline-primary"></button>
+                                <button type="submit" name="accion" value="Agregar" class="btn btn-outline-primary">Generar Venta</button>
                             </div>
                         </div>
                     </form>
@@ -74,7 +74,7 @@
                     <div class="card-body">
                         <div class="d-flex col-sm-5 ml-auto"> 
                             <label>Número Serie</label>
-                            <input type="text" name="nroSerie" class="form-control">
+                            <input type="text" name="nroSerie" value="${nserie}" class="form-control">
                         </div>
                         <br>
                         <table class="table table-hover">
@@ -109,11 +109,11 @@
                     </div>
                     <div class="card-footer d-flex">
                         <div class="col-sm-6">
-                            <input type="submit" name="accion" value="Generar Venta" class="btn-success">
-                            <input type="submit" name="accion" value="Cancelar" class="btn-danger">
+                            <input type="submit" name="accion" value="Generar Venta" class="btn btn-success">
+                            <input type="submit" name="accion" value="Cancelar" class="btn btn-danger">
                         </div>
                         <div class="col-sm-4 ml-auto">
-                            <input type="text" value="${totalpagar}"name="txtTotal" class="form-control">
+                            <input type="text" value="S/. ${totalpagar}0"name="txtTotal" class="form-control">
                         </div>
                     </div>
                 </div>

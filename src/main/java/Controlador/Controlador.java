@@ -5,15 +5,17 @@
  */
 package Controlador;
 
-import Modelo.Cliente;
+
+import Config.GenerarSerie;
 import Modelo.ClienteDAO;
+import Modelo.Cliente;
 import Modelo.Empleado;
 import Modelo.EmpleadoDAO;
 import Modelo.Producto;
 import Modelo.ProductoDAO;
 import Modelo.Venta;
+import Modelo.VentaDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -51,6 +53,8 @@ public class Controlador extends HttpServlet {
     int cantidad;
     double subtotal;
     double totalpagar;
+    String numeroSerie;
+    VentaDAO vdao = new VentaDAO();
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -136,12 +140,17 @@ public class Controlador extends HttpServlet {
                     request.setAttribute("c", c);
                     break;
                 case "Buscarproducto":
+                    
                     int id = Integer.parseInt(request.getParameter("codigoProducto"));
                     p = pdao.ListarId(id);
+                    request.setAttribute("c", c);
                     request.setAttribute("producto", p);
                     request.setAttribute("lista", lista);
+                    request.setAttribute("totalpagar", totalpagar);
+                    
                     break;
                 case "Agregar":
+                    request.setAttribute("c", c);
                     totalpagar = 0.0;
                     item = item+1;
                     cod = p.getId();
@@ -164,6 +173,17 @@ public class Controlador extends HttpServlet {
                     request.setAttribute("lista", lista);
                     break;
                 default:
+                    numeroSerie = vdao.GenerarSerie();
+                    if(numeroSerie==null){
+                        numeroSerie = "00000001";
+                        request.setAttribute("nserie", numeroSerie);
+                    }else{
+                        int incrementar = Integer.parseInt(numeroSerie);
+                        GenerarSerie gs = new GenerarSerie();
+                        numeroSerie = gs.numeroSerie(incrementar);
+                        request.setAttribute("nserie", numeroSerie);
+                    }
+                    
                     request.getRequestDispatcher("RegistrarVenta.jsp").forward(request, response);
             }
 
